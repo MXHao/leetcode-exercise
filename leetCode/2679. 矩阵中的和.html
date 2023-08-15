@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var matrixSum = function(nums) {
+            let res = 0
+            let len = nums.length
+            let len2 = nums[0].length
+            for (let s of nums) {
+                s = s.sort((a, b) => b - a)
+            }
+            for (let j = 0; j < len2; j++) {
+                let maxVal = 0
+                for (let i = 0; i < len; i++) {
+                    maxVal = Math.max(maxVal, nums[i][j])
+                }
+                res += maxVal
+            }
+            return res
+        };
+        console.log(matrixSum([[7,2,1],[6,4,2],[6,5,3],[3,2,1]]))
+    </script>
+</body>
+</html>

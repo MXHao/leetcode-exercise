@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var rearrangeCharacters = function(s, target) {
+            let sCount = new Map()
+            let targetCount = new Map()
+            let n = s.length
+            let m = target.length
+            for (let i = 0; i < m; i++) {
+                targetCount.set(target[i], (targetCount.get(target[i]) || 0) + 1)
+            //    console.log(targetCount.get(target[i]))
+            }
+            for (let i = 0; i < n; i++) {
+               sCount.set(s[i], (sCount.get(s[i]) || 0) + 1)
+            //    console.log(sCount.get(s[i]))
+            }
+            // console.log(sCount)
+            // console.log(targetCount)
+            let ans = Number.MAX_VALUE;
+            for (const [c, count] of targetCount.entries()) {
+                const totalCount = sCount.has(c) ? sCount.get(c) : 0;//当前target中的值在s中出现的次数
+                ans = Math.min(ans, Math.floor(totalCount / count));
+                if (ans === 0) {
+                    return 0;
+                }
+            }
+            return ans;
+
+        };
+        console.log(rearrangeCharacters("ilovecodingonleetcode", "code"))
+    </script>
+</body>
+</html>

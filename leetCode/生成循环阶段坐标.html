@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+// JavaScript算法：给一个数组baseArr，开始节点beginTimeNo，结束节点endTimeNo，循环次数testNum，要求生成对应的数组resArr
+// 假设baseArr是一个非空的数字数组，beginTimeNo和endTimeNo是有效的数组索引，testNum是一个正整数
+// 例如：baseArr = [1, 2, 3, 4, 5], beginTimeNo = 1, endTimeNo = 3, testNum = 4
+
+var  generateArray = function(baseArr, beginTimeNo, endTimeNo, testNum) {
+    if(testNum == 1) {
+        return baseArr
+    }
+  // 创建一个空数组resArr
+  let resArr = [];
+  // 计算baseArr的长度
+  let baseLength = baseArr.length;
+  // 计算开始节点和结束节点之间的元素个数
+  let subLength = endTimeNo - beginTimeNo + 1;
+  // 循环testNum次，每次向resArr添加一个子数组
+  for (let i = 0; i < testNum; i++) {
+    // 创建一个空数组subArr
+    let subArr = [];
+    // 如果是第一次循环，subArr的长度为endTimeNo + 1项，从baseArr[0]开始依次向右
+    if (i === 0) {
+      for (let j = 0; j <= endTimeNo; j++) {
+        subArr.push(baseArr[j]);
+      }
+    }
+    // 如果是最后一次循环，subArr的长度为baseArr.length - beginTimeNo项，从baseArr[beginTimeNo]开始依次向右
+    else if (i === testNum - 1) {
+      for (let j = beginTimeNo; j < baseLength; j++) {
+        subArr.push(baseArr[j] - baseArr[beginTimeNo - 1]);
+      }
+    }
+    // 如果是中间的循环，subArr的长度为endTimeNo - beginTimeNo + 1项，从baseArr[beginTimeNo]开始依次向右
+    else {
+    if(testNum > 2) {
+        for (let j = beginTimeNo; j <= endTimeNo; j++) {
+            subArr.push(baseArr[j] - baseArr[beginTimeNo - 1]);
+        }
+    }
+      
+    }
+    // 将subArr添加到resArr中
+    resArr.push(subArr);
+  }
+  // 返回resArr
+  return resArr;
+}
+console.log(generateArray([25, 85, 145, 265, 325, 445, 505, 525], 2, 5, 2))
+console.log(generateArray([1, 2, 3, 4, 5], 2, 5, 3))
+// 测试代码
+// let baseArr = [1, 2, 3, 4, 5];
+// let beginTimeNo = 1;
+// let endTimeNo = 3;
+// let testNum = 4;
+// let resArr = generateArray(baseArr, beginTimeNo, endTimeNo, testNum);
+// console.log(resArr); // [[1,2,3,4],[2,3,4],[2,3,4],[2,3,4,5]]
+
+
+    </script>
+</body>
+</html>

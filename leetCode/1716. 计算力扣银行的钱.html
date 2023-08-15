@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var totalMoney = function(n) {
+            let res = 0
+            if(n > 7) {
+                let week = parseInt(n / 7)
+                let leaveWeek = n % 7
+                // console.log(week, leaveWeek)//2, 6
+                for (let i = 1; i <= week; i++) {
+                res += (i + i + 6) * 7 / 2
+                }
+                for (let i = 1; i <= leaveWeek; i++) {
+                res += week + i
+                }
+                // console.log(res)
+            }else {
+                res = (1 + n) * n / 2
+            }
+            return res
+        };
+        console.log(totalMoney(10))
+    </script>
+</body>
+</html>

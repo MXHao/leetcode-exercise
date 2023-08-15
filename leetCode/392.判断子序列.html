@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isSubsequence = function(s, t) {
+            let fast = 0//s
+            let slow = 0//t
+            while (fast < t.length) {
+                if(t[fast] == s[slow]) {
+                    fast++
+                    slow++
+                    continue
+                }
+                fast++
+            }
+            if(slow < s.length) {
+                return false
+            }
+            return true
+        };
+        console.log(isSubsequence('abc', 'ahbgdc'))
+    </script>
+</body>
+</html>

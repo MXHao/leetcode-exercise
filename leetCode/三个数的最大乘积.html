@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var maximumProduct = function (nums) {
+            function min(a, b) {
+                return a - b
+            }
+            nums.sort((min));
+            console.log(nums)
+            if(nums[0] * nums[nums.length - 1] < 0) {
+                if (nums[0] < 0 && nums[1] < 0) {
+                result = (nums[0] * nums[1]) > (nums[nums.length - 2] * nums[nums.length - 3]) ? (nums[0] * nums[1]) : (nums[nums.length - 2] * nums[nums.length - 3])
+                } else {
+                    result = (nums[nums.length - 2] * nums[nums.length - 3])
+                }
+                return result * nums[nums.length - 1]
+            }else {
+                return nums.slice(-3).reduce((a, b) => {return a * b})
+            }
+            
+        };
+        console.log(maximumProduct([-1, -2, -3, -4]))
+    </script>
+</body>
+
+</html>

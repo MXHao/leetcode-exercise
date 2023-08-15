@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var minOperations = function(boxes) {
+            let indexArr = []
+            let len = boxes.length
+            for (let i = 0; i < len; i++) {
+               if(boxes[i] == '1') {
+                indexArr.push(i)
+               }
+            }
+            let ans = new Array(len).fill(0)
+            for (let i = 0; i < len; i++) {
+               let step = 0
+               for (let s of indexArr) {
+                step += Math.abs(i - s)
+               }
+               ans[i] = step
+            }
+            return ans
+        };
+        console.log(minOperations("001011"))
+    </script>
+</body>
+</html>

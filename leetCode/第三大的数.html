@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var thirdMax = function (nums) {
+            nums = [...new Set(nums)]
+            if (nums.length < 3) return Math.max(...nums)
+
+            let newNums = nums.sort( (a, b) => {
+                return b - a
+            })
+            return newNums[2]
+
+        }
+        console.log(thirdMax([1,2,-2147483648]))
+    </script>
+</body>
+
+</html>

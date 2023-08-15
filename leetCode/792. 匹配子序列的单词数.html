@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var numMatchingSubseq = function(s, words) {
+            let len = words.length
+            let arr = s.split('')
+            let count = 0
+            for (let i = 0; i < len; i++) {
+               for (let item of words[i]) {
+                if(arr.indexOf(item) == -1) {
+                    next()
+                }else {
+                    count ++
+                }
+               }
+            }
+            return count
+            // "ahjpjau".split(',').forEach(item => {
+            //     arr.includes(item)
+            // });
+        };
+        console.log(numMatchingSubseq('dsahjpjauf', ["ahjpjau","ja","ahbwzgqnuk","tnmlanowax"]))
+    </script>
+</body>
+</html>

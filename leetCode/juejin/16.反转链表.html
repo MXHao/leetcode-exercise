@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 这个题必须掌握牢实，是解很多链接表题的基础的基础。先看题目：
+
+        // 给你单链表的头节点 head ，请你反转链表，并返回反转后的链表。  
+
+        // 示例 1：
+
+
+        // 输入：head = [1,2,3,4,5]
+        // 输出：[5,4,3,2,1]
+        // 解题思路依然是看图找规律，下图就是，我们把链表前面加一个null，这样翻转前和翻转后就一致了。
+        var reverseList = function(head) {
+        let [pre, node] = [null, head];
+        while(node){
+            const temp = node.next;
+            node.next = pre;
+            pre = node;
+            node = temp;
+        }
+        // console.log('pre: ', pre);
+        return pre;
+        };
+        console.log(reverseList([1,2,3,4,5]))
+        
+    </script>
+</body>
+</html>

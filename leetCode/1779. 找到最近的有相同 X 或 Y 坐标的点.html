@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var nearestValidPoint = function(x, y, points) {
+            let arr = points.filter(item => item[0] == x || item[1] == y)
+            if(arr.length == 0) {
+                return -1
+            }
+            let absArr = []
+            let minArr = []
+            for (let item of arr) {
+                absArr.push(Math.abs(item[0] - x) + Math.abs(item[1] - y))  
+            }
+            for (let item of arr) {
+                if(Math.abs(item[0] - x) + Math.abs(item[1] - y) == Math.min(...absArr)) {
+                    minArr.push(item)
+                }
+            }
+            let minRes = []
+            for (let item of minArr) {
+                minRes.push(points.indexOf(item))
+            }
+            return Math.min(...minRes)
+        };
+        console.log(nearestValidPoint(3, 4, [[1,2],[3,1],[2,4],[2,3],[4,4]]))
+    </script>
+</body>
+</html>

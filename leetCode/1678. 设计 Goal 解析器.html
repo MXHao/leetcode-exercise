@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var interpret = function(command) {
+            let len = command.length
+            for (let i = 0; i < len; i++) {
+               if(command[i] == 'G') {
+                command[i] = 'G'
+               }else if(command[i] == '(') {
+                if(command[i + 1] == ')') {
+                    command[i] = 'o'
+                }else {
+                    command[i] = '(al)'
+                }
+               }
+            }
+        };
+        console.log(interpret("G()()()()(al)"))
+    </script>
+</body>
+</html>

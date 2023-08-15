@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div class="content">标签</div>
+    </div>
+    <div class="borderLight">内外边框发光</div>
+<style>
+    
+body
+{
+    margin:0;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height :100vh;
+    background: #060c21;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.box
+{
+    position: relative;
+    width: 100px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #060c21;
+    border-radius: 10px;
+}
+.box:before
+{
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background:#fff;
+    z-index: -1;
+    border-radius: 10px;
+}
+.box:after
+{
+    content: "";
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background:#fff;
+    z-index: -2;
+    filter:blur(20px)
+}
+.box:before,.box:after{
+    /* background: linear-gradient(235deg,#89ff00,#060c21,#00bcd4); */
+    background: #00bcd4
+}
+.content{
+    padding:20px;
+    box-sizing: border-box;
+    color:#fff;
+}
+h1{
+    color: lightskyblue;
+}
+p{
+  text-indent:30px;
+  line-height: 25px;
+}
+.borderLight {
+    color: #fff;
+    box-shadow: 0 0 20px #4dacf1 inset,0 0 10px #4dacf1;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 50px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #4dacf1;
+}
+</style>
+</body>
+</html>

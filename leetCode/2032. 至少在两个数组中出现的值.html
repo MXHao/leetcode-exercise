@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var twoOutOfThree = function(nums1, nums2, nums3) {
+            const nums12 = nums1.filter(num => nums2.includes(num));
+            const nums13 = nums1.filter(num => nums3.includes(num));
+            const nums23 = nums2.filter(num => nums3.includes(num));
+            // 未去重的结果
+            const res = [...nums12, ...nums13, ...nums23];
+            // 去重后返回
+            return [...new Set(res)];
+        };
+        console.log(twoOutOfThree([1,1,3,2], [2,3], [3]))
+    </script>
+</body>
+</html>

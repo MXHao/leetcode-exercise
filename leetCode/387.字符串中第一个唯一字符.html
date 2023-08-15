@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var firstUniqChar = function(s) {
+            let map = {}
+            for (const v of s) {
+                if(map[v]) {
+                    map[v] = map[v] + 1
+                }else {
+                    map[v] = 0 + 1
+                }
+            }
+            for (let i = 0; i < s.length; i++) {
+                if(map[s[i]] == 1) {
+                    return i
+                }
+               
+            }
+            return -1
+        };
+        console.log(firstUniqChar('leetcode'))
+    </script>
+</body>
+</html>

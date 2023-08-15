@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var frequencySort = function(nums) {
+            let map = new Map()
+            let len = nums.length
+            let arr = nums.sort((a, b) => a - b)
+            // console.log(arr)
+            for (let i = 0; i < len; i++) {
+               if(map.has(nums[i])) {
+                map.set(nums[i], map.get(nums[i]) + 1)
+               }else {
+                map.set(nums[i], 1)
+               }
+            }
+            let sortMap = [...map.entries()].sort((a, b) => {
+                if(a[1] === b[1]) {
+                return b[0] - a[0]
+                }
+                return a[1] - b[1]
+            })
+            let len2 = sortMap.length
+            let res = []
+            sortMap.forEach(([key, value]) => {
+                // console.log(key)
+                let i = 0
+                while(i < value) {
+                res.push(key)
+                i++
+                }
+            })
+            return res
+        };
+        console.log(frequencySort([2,3,1,3,2]))
+    </script>
+</body>
+</html>

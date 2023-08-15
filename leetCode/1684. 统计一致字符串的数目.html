@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var countConsistentStrings = function (allowed, words) {
+            let len = words.length
+            let count = 0
+            var fun = function (str) {
+                let len2 = str.length
+                let num = 0
+                for (let i = 0; i < len2; i++) {
+                    console.log('ab'.indexOf('a'))
+                    if (allowed.indexOf(str[i]) == -1) {
+                        return false
+                    } else {
+                        num ++
+                        if(num == str.length) {
+                            return true
+                        }
+                    }
+                    
+                }
+            }
+            for (let i = 0; i < len; i++) {
+                if (fun(words[i])) {
+                    count++
+                }
+            }
+            return count
+        };
+
+        console.log(countConsistentStrings("ab", ["ad", "bd", "aaab", "baa", "badab"]))
+    </script>
+</body>
+
+</html>

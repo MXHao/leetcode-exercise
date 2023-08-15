@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var data = [
+        ['大陆版', '美版', '港版'],
+        ['红色', '黑色', '白色'],
+        ['32g', '64g', '128g', '256g']
+        ]
+        var c = data.reduce((a, b) => a.map(aItem => b.map(bItem => aItem + bItem)).reduce((a, b) => [...a, ...b]))
+        console.log(c)
+    </script>
+</body>
+</html>

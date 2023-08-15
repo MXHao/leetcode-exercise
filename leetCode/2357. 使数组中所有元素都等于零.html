@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var minimumOperations = function(nums) {
+            // if(nums.length == 1) {
+            //     return nums[0] == 0 ? 0 : 1
+            // }
+            // nums = nums.filter(item => item > 0).sort((a, b) => (a - b))
+            // let len = nums.length
+            // let count = 0
+            // while ([...new Set(nums)].length > 0) {
+            //     let temp = nums[0]
+            //     for (let i = 0; i < len; i++) {
+            //         nums[i] = nums[i] - temp
+            //     }
+            //     count ++
+            //     nums = nums.filter(item => item > 0)
+            // }
+            // return count
+            return [...new Set(nums.filter(item => item > 0))].length
+        };
+        console.log(minimumOperations([1,2,3,5]))
+        console.log(minimumOperations([1,5,0,3,5]))
+    </script>
+</body>
+</html>

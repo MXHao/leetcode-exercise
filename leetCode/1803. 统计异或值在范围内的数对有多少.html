@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var countPairs = function (nums, low, high) {
+            let ans = 0;
+            for (let i = 0; i < nums.length; i++) {
+                for (let j = i + 1; j < nums.length; j++) {
+                    const xor = nums[i] ^ nums[j];
+                    if (xor >= low && xor <= high) ans++;
+                }
+            }
+            return ans;
+        };
+        console.log(countPairs([1,4,2,7], 2, 6))
+    </script>
+</body>
+
+</html>

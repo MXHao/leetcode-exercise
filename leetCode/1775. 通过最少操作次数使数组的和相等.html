@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var minOperations = function (nums1, nums2) {
+            // sub 表示两个数组所有元素的和的差，是个正值; count是统计需要变动的次数
+            let largeNums = [], smallNums = [], sub = 0, count = 0;
+            // 两个数组分别求和
+            let a = nums1.reduce((pre, item) => pre + item, 0), b = nums2.reduce((pre, item) => pre + item, 0);
+            // 和比较大的数组放到largeNums, 小的放到smallNums
+            largeNums = a >= b ? nums1 : nums2;
+            smallNums = a >= b ? nums2 : nums1;
+            sub = Math.abs(a - b)//21-10 == 11
+            largeNums.sort((a, b) => b - a) // 较大的数组从大到小排序[6, 5, 4, 3, 2, 1]
+            smallNums.sort((a, b) => a - b) // 较小的数组从小到大排序[1, 1, 2, 2, 2, 2]
+            // 这里表面较小的数组全部为1还是大于较大的数组全部值为6的时候，永远不能交换成果
+            if (largeNums.length * 1 > smallNums.length * 6) return -1;
+            a = 0, b = 0; // 减少变量，复用，分别做两个数组的指针
+            while (sub > 0) {
+                // 计数加1
+                count++;
+                // 分别计算两个数组当前指针所在的值哪个可以最大程度的减少m的值,largeNums数组的元素从最大的开始，尽可能减小
+                // 最小可以减到1, 对应Math.abs(largeNums[a] - 1); smallNums元素从最小元素开始，尽可能增大，最大是增大到6,
+                // 对应Math.abs(6 - smallNums[b]), 如果上面其中一种方式可以使得m的值为0
+                // (比如下面t1 == 5, t2 = 5, sub = 11, t2 == 5 < sub == 11,如果t1 >= sub || t2 >= sub，break退出循环(对应第一个if));
+                // 如果m一次不能减为小于0的数，之后还需要比较哪种方式可以更快使m的值变小，
+                // 就去改变哪个数组指针，然后把对应的指针加1(对应下面的第二个if), m 的值也要相应减小
+                let t1 = Math.abs(largeNums[a] - 1), t2 = Math.abs(6 - smallNums[b]);//5, 5, 11
+                // 如果largeNums或smallNums在当前指针所在的元素经过一次变换就可以满足要求,把m设置成0,break退出循环
+                if (t1 >= sub || t2 >= sub) {
+                    sub = 0
+                    break;
+                }
+                if (t1 >= t2) {
+                    sub = sub - t1
+                    a++
+                } else {
+                    sub = sub - t2
+                    b++
+                }
+            }
+            if (sub === 0) {
+                return count;
+            }
+            else return -1
+        };
+        console.log(minOperations([1, 2, 3, 4, 5, 6], [1, 1, 2, 2, 2, 2]))
+
+    </script>
+</body>
+
+</html>

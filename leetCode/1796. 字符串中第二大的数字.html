@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var secondHighest = function(s) {
+            let first = -1
+            let second = -1
+            let len = s.length
+            for (let i = 0; i < len; i++) {
+                let c = s[i]
+               if(0 <= c && c <= 9) {
+                if(c > first) {
+                    debugger
+                    second = first
+                    first = c
+                }else if(c < first && c > second) {
+                    second = c
+                }
+               }
+            }
+            return second
+        };
+        console.log(secondHighest("abc1111"))
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var reverseVowels = function (s) {
+            s = s.split('');
+            let indexA = 0
+            let indexB = s.length - 1;
+            let yyStr = 'aeiouAEIOU'
+            while (indexA < indexB) {
+                if (yyStr.indexOf(s[indexA]) !== -1 && yyStr.indexOf(s[indexB]) !== -1) {
+                    let tmp = s[indexA];
+                    s[indexA] = s[indexB];
+                    s[indexB] = tmp;
+                    indexA++;
+                    indexB--;
+                }
+                if(yyStr.indexOf(s[indexA]) === -1) {
+                    indexA++;
+                }
+                if(yyStr.indexOf(s[indexB]) === -1) {
+                    indexB--;
+                }
+            }
+            return s.join('')
+        };
+        console.log(reverseVowels('hello'))
+    </script>
+</body>
+
+</html>

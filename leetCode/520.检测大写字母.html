@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var detectCapitalUse = function(word) {
+            let result = []
+            let cptFun = function(data) {
+                if(data >= 'A' && data <= 'Z'){   //这种方法容易记，但实现原理也是去比较ASCII码值的
+                    result.push('true')
+                }else if(data >= 'a' && data <= 'z'){
+                    result.push('false')
+                }
+            }
+            let arr = word.split('')
+            arr.forEach(item => {
+                console.log(item)
+                cptFun(item)
+            });
+            if(result.filter(item => item == 'true').length == arr.length) {
+                return true
+            }else if(result.filter(item => item == 'false').length == arr.length) {
+                return true
+            }else if(result.filter(item => item == 'false').length == arr.length - 1 && result[0] == 'true') {
+                return true
+            }else {
+                return false
+            }
+            
+            
+        };
+        console.log(detectCapitalUse('g'))
+    </script>
+</body>
+</html>

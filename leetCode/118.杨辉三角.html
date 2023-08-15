@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var generate = function(numRows) {
+            if(numRows === 0){ return [] }
+            const result = Array.from(new Array(numRows), ()=>[])
+            console.log(result)
+            for (let i = 0; i < numRows; i++) {
+                result[i][0] = 1
+                result[i][i] = 1
+               for (let j = 1; j < i; j++) {
+                result[i][j] = result[i-1][j-1] + result[i-1][j]
+               }
+            }
+            return result
+        };
+        console.log(generate(5))
+    </script>
+</body>
+</html>

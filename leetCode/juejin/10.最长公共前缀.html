@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 题目如下：
+        // 编写一个函数来查找字符串数组中的最长公共前缀。
+        // 如果不存在公共前缀，返回空字符串 ""。
+        // 示例 1：
+
+        // 输入：strs = ["flower","flow","flight"]
+        // 输出："fl"
+        // 示例 2：
+
+        // 输入：strs = ["dog","racecar","car"]
+        // 输出：""
+        // 解释：输入不存在公共前缀。
+        //  
+
+        // 提示：
+
+        // 0 <= strs.length <= 200
+        // 0 <= strs[i].length <= 200
+        // strs[i] 仅由小写英文字母组成
+
+        // 思路：
+        // 这个题的思路就是，假如你求数组里3个元素的最长公共前缀
+
+        // 你先拿前两个比较，求出他们两个的最长公共前缀
+        // 然后上面求出的结果去跟第三个元素求最长公共前缀
+        // n个元素就一直这么reduce下去
+        let myFun = function(strs) {
+            if(strs.length == 0) {
+                return ''
+            }
+            if(strs.length == 1) {
+                return strs[0]
+            }
+            console.log(strs.reduce(getSameStr, strs[0]))
+            return strs.reduce(getSameStr, strs[0])
+        }
+        function getSameStr(a, b) {
+            let res = ''
+            for (let i = 0; i < a.length; i++) {
+                if(a[i] == b[i]) {
+                    res += a[i]
+                }else {
+                    // console.log(res)
+                    return res
+                }
+                
+            }
+            // console.log(res)
+            return res
+        }
+        myFun(["flower","flow","flight"])
+    </script>
+</body>
+</html>

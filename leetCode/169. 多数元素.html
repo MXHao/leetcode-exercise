@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var majorityElement = function(nums) {
+            console.log(nums.sort((a, b) => a - b))
+            nums.sort((a, b) => a - b)
+            return nums[Math.floor(nums.length / 2)]
+        };
+        console.log(majorityElement([4,4,1,1,3,2]))
+    </script>
+</body>
+</html>

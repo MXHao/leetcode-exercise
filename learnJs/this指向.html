@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function foo(num) {
+      console.log("foo: " + num); // 记录 foo 被调用的次数
+      this.count++;
+      console.log(this); // Window
+    }
+    foo.count = 0;
+    var i;
+    for (i = 0; i < 10; i++) {
+      if (i > 5) {
+        foo(i);
+      }
+    }
+    // foo: 6
+    // foo: 7
+    // foo: 8
+    // foo: 9
+
+    console.log('count:', foo.count)
+  // count: 0
+  </script>
+</body>
+
+</html>

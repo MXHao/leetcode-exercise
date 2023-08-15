@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var areAlmostEqual = function(s1, s2) {
+            let diff = []
+            for (let i = 0; i < s1.length; i++) {
+               if(s1[i] != s2[i]) {
+                if (diff.length >= 2) {
+                    return false;
+                }
+                diff.push(i)
+               }
+            }
+            if(diff.length == 0) {
+                return true
+            }
+            if(diff.length != 2) {
+                return false
+            }
+            return (s1[diff[0]] == s2[diff[1]] && s2[diff[0]] == s1[diff[1]]) 
+        };
+        console.log(areAlmostEqual('kelb', 'kelb'))
+    </script>
+</body>
+</html>

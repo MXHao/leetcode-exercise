@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var bestHand = function (ranks, suits) {
+            let res = ''
+            if ([...new Set(suits)].length == 1) {
+                res = "Flush"
+            } else if ([...new Set(ranks)].length == 2) {
+                res = "Three of a Kind"
+            } else if ([...new Set(ranks)].length == 3) {//[1,1,2,2,3], [1,1,1,2,3]
+                for (let i = 0; i < ranks.length - 2; i++)
+                    for (let j = i + 1; j < ranks.length - 1; j++)
+                        for (let k = j + 1; k < ranks.length; k++)
+                            if (ranks[i] === ranks[j] && ranks[j] === ranks[k])
+                                return 'Three of a Kind'
+                return 'Pair'
+            } else if ([...new Set(ranks)].length == 4) {
+                res = "Pair"
+            } else if ([...new Set(ranks)].length == 5) {
+                res = "High Card"
+            }
+            return res
+        };
+        console.log(bestHand([8, 1, 1, 13, 13], ["c", "c", "b", "a", "d"]));
+
+    </script>
+</body>
+
+</html>

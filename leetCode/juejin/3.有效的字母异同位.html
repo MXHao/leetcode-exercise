@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 给定两个字符串 s 和 t ，编写一个函数来判断 t 是否是 s 的字母异位词。
+        // 注意：若 s 和 t 中每个字符出现的次数都相同，则称 s 和 t 互为字母异位词。
+        //  
+        // 示例 1:
+
+        // 输入: s = "anagram", t = "nagaram"
+        // 输出: true
+        // 示例 2:
+
+        // 输入: s = "rat", t = "car"
+        // 输出: false
+        var isAnagram = function(s, t) {
+            // const sLen = s.length
+            // const tLen = t.length
+            // if(sLen !== tLen) {
+            //     return false
+            // }
+            // const obj = {}
+            // for (let i = 0; i < sLen; i++) {
+            //    obj[s[i]] ? obj[s[i]]++ : obj[s[i]] = 1
+            //    obj[t[i]] ? obj[t[i]]--: obj[t[i]] = -1
+            // }
+            // console.log(obj)
+            // console.log(Object.values(obj).every(v => {
+            //     v == 0
+            // }))
+            const sLen = s.length;
+            const tLen = t.length;
+            if(sLen !== tLen ) {
+                console.log(false)
+                return false;
+            }
+            const obj = {};
+            for(let i = 0 ; i < sLen ; i++){
+                const currentS = s[i];
+                const currentT = t[i];
+                obj[currentS] ? obj[currentS]++ : obj[currentS] = 1;
+                obj[currentT] ? obj[currentT]-- : obj[currentT] = -1;
+            }
+            let flag = Object.values(obj).every(v =>  v === 0)
+            console.log('obj: ', obj);
+            console.log(flag)
+            return Object.values(obj).every(v=>v===0);
+
+        };
+        isAnagram('anagram', 'nagaram')
+        isAnagram('anagram', 'nagaraq')
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var groupAnagrams = function(strs) {
+            const map = new Map()
+            for (let str of strs) {
+                let arr = Array.from(str)
+                let key = arr.sort().toString()
+                let list = map.get(key) ? map.get(key) : new Array()
+                list.push(str)
+                map.set(key, list);
+            }
+            return Array.from(map.values());
+            
+        };
+        console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+        // 每日一题：字符串轮转
+        var isFlipedString = function(s1, s2) {
+            return s1.length == s2.length && (s1 + s1).indexOf(s2) != -1
+        };
+        console.log(isFlipedString('waterbottle', 'erbottlewat'))
+    </script>
+</body>
+</html>

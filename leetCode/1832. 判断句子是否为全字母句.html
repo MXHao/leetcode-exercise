@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var checkIfPangram = function(sentence) {
+            let arr = sentence.split('')
+            if([...new Set(arr)].length != 26) {
+                return false
+            }
+            // for (let s of sentence) {
+            //     if((s.charCodeAt() < 65 || (s.charCodeAt() > 90) && s.charCodeAt() < 97) || s.charCodeAt() > 122) {
+            //         return false
+            //     }
+            // }
+            return true
+        };
+        console.log(checkIfPangram("thequickbrownfoxjumpsoverthelazydog"))
+    </script>
+</body>
+</html>

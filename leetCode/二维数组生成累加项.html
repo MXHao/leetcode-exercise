@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// 定义一个函数，接受一个二维数组作为参数
+var transformArray = function(baseArr) {
+//给一个二维数组baseArr
+
+//定义一个resArr等于baseArr
+let resArr = [...baseArr]; //使用扩展运算符创建浅拷贝
+
+//修改resArr数组，resArr[n]等于resArr[n]中的每一项都加上baseArr[n-1]项中的最后一项
+for (let i = 1; i < resArr.length; i++) { //从第二个子数组开始遍历
+  let last = baseArr[i-1][baseArr[i-1].length - 1]; //获取前一个子数组的最后一项
+  for (let j = 0; j < resArr[i].length; j++) { //遍历当前子数组的每一项
+    resArr[i][j] += last; //将当前项加上前一个子数组的最后一项
+  }
+}
+
+//返回修改后的resArr
+return resArr.flat(Infinity);
+}
+
+// 测试函数
+console.log(transformArray([[1,2,3,4],[2,3,4],[2,3,4],[2,3,4,5]]))
+
+    </script>
+</body>
+</html>

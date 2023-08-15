@@ -1,0 +1,83 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: lightblue;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+        }
+        .icon {
+            display: block;
+            margin: 0 auto;
+            width: 100px;
+            height: 100px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: orange;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .joke {
+            font-size: 24px;
+            text-align: center;
+        }
+        .punchline {
+            display: none;
+            font-size: 32px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .footer {
+            font-size: 12px;
+            color: gray;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>我的笑话网站</h1>
+    <img src="https://image.flaticon.com/icons/png/512/187/187150.png" class="icon" alt="smiley face">
+    <div class="container">
+        <div class="buttons">
+            <button class="button" onclick="login()">登录</button>
+            <button class="button" onclick="register()">注册</button>
+        </div>
+        <div class="joke">
+            真正有趣的笑话！
+        </div>
+        <div class="punchline" id="punchline">
+            
+        </div>
+        <div class="buttons">
+            <button class="button" onclick="reveal()">按下揭晓笑点</button>
+        </div>
+    </div>
+    <div class="footer">
+        powered by OpenAI
+    </div>
+    <script>
+        function login() {
+            alert("这是一个示例网站，没有真正的登录功能。");
+        }
+        function register() {
+            alert("这是一个示例网站，没有真正的注册功能。");
+        }
+        function reveal() {
+            var punchline = document.getElementById("punchline");
+            punchline.style.display = "block";
+            punchline.innerHTML = "这就是笑话！";
+        }
+    </script>
+</body>
+</html>

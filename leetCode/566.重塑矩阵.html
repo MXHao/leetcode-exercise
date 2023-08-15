@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var matrixReshape = function(mat, r, c) {
+            const [m, n] = [mat.length, mat[0].length]
+            if(m * n != r * c) {
+                return mat
+            } 
+            const res = new Array(r)
+            for (let i = 0; i < r; i++) {
+               res[i] = new Array(c)
+            }
+            
+            let newR = 0, newC = 0;
+            for (let i = 0; i < m; i++) {
+               for (let j = 0; j < n; j++) {
+                  res[newR][newC] = mat[i][j]
+                    newC++
+                    if (newC == c) {      // 达到宽度限制，该“换行”
+                    newR++            // 准备填下一行
+                    newC = 0          // newC 归零
+                }
+            }
+
+            };
+            return res
+        }
+    console.log(matrixReshape([[1, 2, 3], [4, 5, 6]], 3, 2))
+    </script>
+</body>
+</html>

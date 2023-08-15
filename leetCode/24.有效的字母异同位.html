@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // s = "anagram", t = "nagaram"
+        var isAnagram = function(s, t) {
+            function getAscii (str) {
+                let arr = Array(26).fill(0)
+                for (let v of str) {
+                    arr[v.charCodeAt() - 97]++
+                }
+                return arr.join('')
+            }
+            return getAscii(s) === getAscii(t)
+        };
+        console.log(isAnagram("anagram", "nagaram"))
+    </script>
+</body>
+</html>

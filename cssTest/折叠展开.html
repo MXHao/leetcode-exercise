@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    const seeMore = document.getElementById('seeMoreBtn')
+const article = document.getElementById('article')
+
+seeMore.addEventListener('click', () => {
+  article.classList.toggle('extended')
+
+  const extended = article.classList.contains('extended')
+  if (extended) {
+    seeMore.innerHTML = '收起内容'
+  } else {
+    seeMore.innerHTML = '查看更多'
+  }
+})
+</script>
+<body>
+    <div class="position-relative">
+        <input id="check" type="checkbox">
+        <label for="check" class="check-in el-icon-arrow-down">更多</label>
+        <label for="check" class="check-out el-icon-arrow-up">收起</label>
+        <span class="head_3">国家5A级旅游景区</span>
+        <div class="element mt-2">
+          <div class="recommend-box mr-1">
+            <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg">
+            <p class="text_center text_assist">1</p>
+          </div>
+          <div class="recommend-box mr-1">
+            <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg">
+            <p class="text_center text_assist">2</p>
+          </div>
+          ……
+          <div class="recommend-box mr-1">
+            <img src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg">
+            <p class="text_center text_assist">8</p>
+          </div>
+        </div>
+      </div>
+
+
+</body>
+<style>
+.element {
+  /* 默认显示一行 */
+  max-height: 90px;
+  overflow: hidden;
+  transition: max-height 0.25s;
+}
+
+.element img {
+  width: 60px;
+  height: 60px;
+}
+.recommend-box:nth-child(4n) {
+  margin-right: 0;
+}
+.recommend-box {
+  float: left;
+  width: 60px;
+}
+:checked ~ .element {
+  /* 选择了展开后改变max-height高度 */
+  max-height: 200px;
+}
+input[type="checkbox"] {
+  position: absolute;
+  /* 把checkout设置成不可见 */
+  clip: rect(0 0 0 0);
+}
+.check-out {
+  /* 收起按钮默认隐藏 */  
+  display: none;
+}
+.check-in,
+.check-out {
+  color: #999;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+:checked ~ .check-out {
+  /* 展开按钮选中后，折叠按钮显示 */ 
+  display: inline-block;
+}
+:checked ~ .check-in {
+  /* 展开按钮选中后，展开按钮隐藏 */ 
+  display: none;
+}
+</style>
+</html>

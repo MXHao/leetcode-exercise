@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var findMinDifference = function (timePoints) {
+            let arr = []
+            let minVal = 1441
+            let len = timePoints.length
+            for (let i = 0; i < len; i++) {
+               let [hour, min] = timePoints[i].split(':')
+               let val = hour * 60 + min * 1
+               if (arr.includes(val)) {
+                    return 0;
+                }
+               arr.push(val)
+            }
+            arr = arr.sort((a, b) => a - b)
+            let len2 = arr.length
+            for (let i = 0; i < len2; i++) {
+               if(arr[i] - arr[i-1] < minVal) {
+                minVal = arr[i] - arr[i-1]
+               }
+            }
+            // 比较数组头尾的边界值
+            return Math.min(minVal, 1440 - arr[arr.length-1] + arr[0]);
+
+        };
+
+        console.log(findMinDifference(["00:01", "23:59", "00:00"]))
+    </script>
+</body>
+
+</html>

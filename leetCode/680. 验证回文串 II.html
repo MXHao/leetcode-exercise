@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    给你一个字符串 s，最多 可以从中删除一个字符。
+
+    请你判断 s 是否能成为回文字符串：如果能，返回 true ；否则，返回 false 。
+
+     
+
+    示例 1：
+
+    输入：s = "aba"
+    输出：true
+    <script>
+        var validPalindrome = function(s) {
+            let l = 0, r = s.length - 1; // 头尾指针
+            while (l < r) { 
+                if (s[l] != s[r]) { // 指向的字符不一样，还不能死刑 
+                return isHuiWen(s, l + 1, r) || isHuiWen(s, l, r - 1); //转为判断删掉一个字符后，是否回文
+                }
+                l++;
+                r--;
+            }
+            return true;
+        };
+        function isHuiWen(str, s, e) {
+            while(s < e) {
+                if(str[s] != str[e]) {
+                    return false
+                }
+                s++
+                e--
+            }
+            return true
+        }
+        console.log(validPalindrome('abca'))
+    </script>
+</body>
+</html>

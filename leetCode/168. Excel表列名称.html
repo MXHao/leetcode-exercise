@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var convertToTitle = function(n) {
+            let str = "";
+            while(n){
+                // 取余数，范围[0-25]，0对应26 也就是Z；
+                let y = n % 26;
+                // n取除以26并且向下取整
+                n = n / 26 | 0;
+
+                // 余数为0时，n--;
+                y || n--;
+
+                // 余数为0时对应26，其余不变；
+                str = String.fromCharCode(64 + (y || 26)) + str;
+            }
+            return str;
+        };
+        console.log(convertToTitle(51))
+    </script>
+</body>
+</html>

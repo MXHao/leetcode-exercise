@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var numDifferentIntegers = function(word) {
+            let arr = word.split('')
+            // console.log(arr)
+            let len = arr.length
+            for (let i = 0; i < len; i++) {
+                if((arr[i].charCodeAt() >= 65 && arr[i].charCodeAt() <= 90) || (arr[i].charCodeAt() >= 97 && arr[i].charCodeAt() <= 122)) {
+                    arr[i] = ' '
+                }
+                
+            }
+            let arr2 = arr.join('').split(' ').filter(item => item != '')
+            let setArr = [...new Set(arr2)]
+            // console.log(setArr)
+            for (let i = 0; i < setArr.length; i++) {
+                setArr[i] = BigInt(setArr[i])
+            }
+            let resArr = [...new Set(setArr)]
+            return resArr.length
+        };
+        console.log(numDifferentIntegers("a1b01c001"))
+    </script>
+</body>
+</html>

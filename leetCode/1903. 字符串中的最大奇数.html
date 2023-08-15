@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var largestOddNumber = function(num) {
+            let len = num.length
+            let res = ''
+            for (let i = len - 1; i >= 0 ; i--) {
+            //    console.log(num[i])
+               if(num[i] % 2 != 0) {
+                // console.log(num[i], i)
+                res = num.substring(0, i + 1)
+                break;
+               }
+            }
+            return res
+        };
+        console.log(largestOddNumber("35427223"))
+    </script>
+</body>
+</html>

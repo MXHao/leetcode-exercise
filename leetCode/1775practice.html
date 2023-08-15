@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var minOperations = function (nums1, nums2) {
+            let count = 0
+            let sum1 = nums1.reduce((a, b) => a + b)
+            let sum2 = nums2.reduce((a, b) => a + b)
+            let sub = Math.abs(sum1 - sum2)
+            let largeArr = sum1 > sum2 ? nums1 : nums2
+            let minArr = sum1 < sum2 ? nums1 : nums2
+            largeArr.sort((a, b) => b - a)
+            minArr.sort((a, b) => a - b)
+            console.log(largeArr, minArr)//[6, 5, 4, 3, 2, 1], [1, 1, 2, 2, 2, 2]
+            if(largeArr.length * 1 > minArr.length * 6) {
+                return -1
+            }
+            sum1 = 0
+            sum2 = 0
+            while (sub > 0) {//11
+                count++
+                let t1 = Math.abs(largeArr[sum1] - 1)//5
+                let t2 = Math.abs(6 - minArr[sum2])//5
+                if(t1 >= sub || t2 >= sub) {
+                    sub = 0
+                    break;
+                }
+                if(t1 >= t2) {
+                    sub = sub - t1
+                    sum1++
+                }else {
+                    sub = sub - t2
+                    sum2++
+                }
+            }
+            if(sub == 0) {
+                return count
+            }else {
+                return -1
+            }
+        };
+        console.log(minOperations([1, 2, 3, 4, 5, 6], [1, 1, 2, 2, 2, 2]))
+
+    </script>
+</body>
+
+</html>

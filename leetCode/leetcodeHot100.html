@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 1.两数之和
+        // 输入：nums = [2,7,11,15], target = 9
+        // 输出：[0,1]
+        // 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
+
+        var twoSum = function (nums, target) {
+            let map = new Map()
+            for (let i = 0; i < nums.length; i++) {
+                map.set(nums[i], i)
+                if (map.has(target - nums[i])) {
+                    console.log([map.get(target - nums[i]), i])
+                }
+            }
+            return []
+
+        };
+        twoSum([2, 7, 11, 15], 9)
+
+
+
+
+        // 20. 有效的括号
+        // 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 s ，判断字符串是否有效。
+
+        // 有效字符串需满足：
+
+        // 左括号必须用相同类型的右括号闭合。
+        // 左括号必须以正确的顺序闭合。
+        // 输入：s = "()[]{}"
+        // 输出：true
+        // 输入：s = "([)]"
+        // 输出：false
+        // let string1 = '([)]'
+        // let string2 = '([])'
+        // let string3 = "([}}])"
+        // '([}'
+        // '])'
+        /**
+         * @param {string} s
+         * @return {boolean}
+         */
+        // var isValid = function (s) {
+        //     const queue = []
+        //     const map = {
+        //         '(': ')',
+        //         '{': '}',
+        //         '[': ']'
+        //     }
+        //     for (let i = 0; i < s.length; i++) {
+        //         const item = s[i]
+        //         if (map[item]) {
+        //             queue.unshift(map[item])
+        //         } else {
+        //             if (queue[0] === item) {
+        //                 queue.shift()
+        //             } else {
+        //                 return false
+        //             }
+        //         }
+        //     }
+        //     console.log(queue.length === 0)
+        //     return queue.length === 0
+        // };
+        // isValid(string3)
+    </script>
+</body>
+
+</html>

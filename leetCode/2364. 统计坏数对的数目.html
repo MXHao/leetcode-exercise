@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var countBadPairs = function(nums) {
+        // 初始化一个结果变量
+        let result = 0;
+        // 初始化一个哈希表
+        let map = new Map();
+        // 遍历数组中的每个元素
+        for (let i = 0; i < nums.length; i++) {
+            // 把元素减去它的下标
+            let diff = nums[i] - i;
+            // 如果哈希表中已经有这个元素，就把它出现的次数加一
+            if (map.has(diff)) {
+            map.set(diff, map.get(diff) + 1);
+            } else {
+            // 否则就把这个元素和它出现的次数（1）存入哈希表
+            map.set(diff, 1);
+            }
+        }
+        // 遍历哈希表中的每个键值对
+        for (let [key, value] of map.entries()) {
+            // 如果键和值的差不等于0，就把值乘以值减一再除以二加到结果上
+            if (key - value != 0) {
+            result += value * (value - 1) / 2;
+            }
+        }
+        // 返回结果变量
+        return result;
+        };
+        console.log(countBadPairs([4,1,3,3]))
+    </script>
+</body>
+</html>

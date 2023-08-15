@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // console.log('a'.charCodeAt())
+        // String.fromCharCode(at - as)
+        var findTheDifference = function(s, t) {
+            let as = 0, at = 0
+            for (let i = 0; i < s.length; i++) {
+               as += s[i].charCodeAt()
+            } 
+            for (let i = 0; i < t.length; i++) {
+                at += t[i].charCodeAt()
+            }
+            return String.fromCharCode(at - as)
+        };
+        console.log(findTheDifference('abcd', 'abecd'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var minOperations = function(s) {
+            for (let i = 0; i < s.length; i++) {
+               let r1 = 0//010101
+               let r2 = 0//101010
+               //有101010和010101两种情况
+               //偶数里面是0的数
+               if(i % 2) {
+                if(s[i] == '0') {
+                    r1++
+                }else {
+                    r2++
+                }
+               }else {
+                if(s[i] == '0') {
+                    r2++
+                }else {
+                    r1++
+                }
+               }
+            }
+            return Math.min(r1, r2)
+        };
+        console.log(minOperations('0011'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var alternateDigitSum = function(n) {
+            // console.log(n.toString().split(''))
+            let arr = n.toString().split('')
+            let len = arr.length
+            for (let i = 0; i < len; i++) {
+                if(i % 2 == 0) {
+                    arr[i] = Math.abs(+arr[i])
+                }else {
+                    arr[i] = - Math.abs(+arr[i])
+                }
+               
+            }
+            console.log(arr)
+            let result = arr.reduce((a, b) => a + b)
+           return result
+        };
+        console.log(alternateDigitSum(521))
+    </script>
+</body>
+</html>

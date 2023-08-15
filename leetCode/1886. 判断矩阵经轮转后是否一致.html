@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var findRotation = function(mat, target) {
+            let n = mat.length
+            let b1 = true,b2 = true,b3 = true,b4 = true;
+            for (let i = 0; i < n; i++) {
+               for (let j = 0; j < n; j++) {
+                //旋转90度
+                if(mat[n - j - 1][i] != target[i][j]){
+                    b1 = false;
+                }
+                //旋转180度
+                if (mat[n - i - 1][n - j - 1] != target[i][j]){
+                    b2 = false;
+                }
+                //旋转270度
+                if (mat[j][n- i- 1] != target[i][j]){
+                    b3 = false;
+                }
+                //旋转360度
+                if (mat[i][j] != target[i][j]){
+                    b4 = false;
+                }
+               }
+            }
+            return b1 || b2 || b3 || b4;
+        };
+        console.log(findRotation([[0,1],[1,1]], [[1,0],[0,1]]))
+    </script>
+</body>
+</html>

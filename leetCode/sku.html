@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 定义一个函数来生成数组的组合
+        function generateCombinations(arrays) {
+            // 初始化结果数组为空
+            let result = [];
+            // 定义一个辅助函数来递归地生成组合
+            function helper(prefix, index) {
+                // 如果索引等于数组的长度，说明已经遍历完所有数组
+                if (index === arrays.length) {
+                    // 将前缀添加到结果数组中
+                    result.push(prefix);
+                    // 返回结果数组
+                    return result;
+                }
+                // 否则，遍历当前索引对应的数组中的每个元素
+                for (let element of arrays[index]) {
+                    // 将元素添加到前缀后面，并递增索引，继续递归调用辅助函数
+                    helper(prefix + "-" + element, index + 1);
+                }
+            }
+            // 调用辅助函数，初始前缀为商品名称，初始索引为0
+            helper(goods, 0);
+            // 返回结果数组
+            return result;
+        }
+
+        // 定义给定的数据
+        const goods = "鞋子";
+        const specList = [
+            ["运动鞋", "休闲鞋"],
+            ["36码", "45码"],
+            ["红色", "蓝色"],
+            ["高帮", "低帮"],
+        ];
+
+        // 调用函数并打印输出结果
+        console.log(generateCombinations(specList));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var reverseWords = function(s) {
+            // trim()：去除字符串的头尾空格；
+            // split(/\s+/)：以空格作为分割元素生成字符串数组；
+            // reverse()：颠倒数组顺序；
+            // join(' ')：以空格作为分隔符把数组元素放入一个字符串中。
+            s = s.trim()
+            var regEx = /\s+/g; 
+            s = s.replace(regEx, ' '); 
+            let arr = s.split(' ')
+            return arr.reverse().join(' ')
+        };
+        console.log(reverseWords("a good   example"))
+    </script>
+</body>
+</html>

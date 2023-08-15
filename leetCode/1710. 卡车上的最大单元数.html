@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var maximumUnits = function(boxTypes, truckSize) {
+            let newBox =  boxTypes.sort((a, b) => b[1] - a[1])
+            let result = 0
+            for (let item of newBox) {
+                console.log(item)
+                if(item[0] <= truckSize) {
+                    result += item[0] * item[1]
+                    console.log(result)
+                    truckSize -= item[0]
+                }else {
+                    result += truckSize * item[1]
+                    break
+                }
+            
+            }
+            return result
+        };
+        console.log(maximumUnits([[5,10],[2,5],[4,7],[3,9]], 10))
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var minimumLength = function(s) {
+            let len = s.length
+            let left = 0
+            let right = len - 1
+            while (left < right && s[left] == s[right]) {
+                let c = s[left]
+                while (left <= right && s[left] == c) {
+                    left++
+                }
+                while (left <= right && s[right] == c) {
+                    right--
+                }
+            }
+            return right - left + 1
+        };
+        console.log(minimumLength("aabccabba"))
+    </script>
+</body>
+</html>

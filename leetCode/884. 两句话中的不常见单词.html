@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var uncommonFromSentences = function(s1, s2) {
+            let resArr = []
+            //合并数组
+            let mergeArr = [...s1.split(' '), ...s2.split(' ')]
+            //排序
+            let sortArr = [...mergeArr].sort()
+            //两个数组的重复项
+            let tempArr = []
+            //找到两个数组的重复项
+            for (let i = 0; i < sortArr.length; i++) {
+                if (sortArr[i + 1] === sortArr[i]) {
+                    tempArr.push(sortArr[i])
+                }
+            }
+            //合并数组去重
+            let setArr = [...new Set(mergeArr)]
+            //去重后的数组和重复项数组对比，得出结果
+            setArr.forEach(item => {
+                if(tempArr.includes(item) == false) {
+                    resArr.push(item)
+                }
+            });
+            return resArr
+        };
+        console.log(uncommonFromSentences("this apple is sweet", "this apple is sour"))
+    </script>
+</body>
+</html>

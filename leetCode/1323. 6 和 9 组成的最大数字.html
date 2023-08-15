@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var maximum69Number  = function(num) {
+            let a = num.toString().split('')
+            console.log(a)
+            let len = a.length
+            for (let i = 0; i < len; i++) {
+               if(a[i] == '6') {
+                a[i] = '9'
+                break
+               }
+            }
+            return a.join('')
+        };
+        console.log(maximum69Number(9669))
+    </script>
+</body>
+</html>

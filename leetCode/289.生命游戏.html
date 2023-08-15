@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var gameOfLife = function (board) {
+            const originBoard = JSON.parse(JSON.stringify(board))
+            const m = board.length
+            const n = board[0].length
+
+            for (let i = 0; i < m; i++) {
+                for (let j = 0; j < n; j++) {
+                    const num = getAliveCellNum(originBoard, i, j)
+                    // 先处理死细胞
+                    if (board[i][j] === 0) {
+                        if (num === 3) {
+                            board[i][j] = 1
+                        }
+                    } else {  // 处理活细胞
+                        if (num < 2 || num > 3) {
+                            board[i][j] = 0
+                        }
+                    }
+                }
+            }
+
+        };
+        console.log(gameOfLife([[0, 1, 0], [0, 0, 1], [1, 1, 1], [0, 0, 0]]))
+    </script>
+</body>
+
+</html>

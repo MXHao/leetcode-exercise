@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var frequencySort = function(s) {
+            let map = new Map()
+            let ans = ''
+            for (let w of s) {
+                map.set(w, (map.get(w) || 0) + 1)
+            }
+            map = new Map([...map].sort((v1, v2) => v2[1] - v1[1]))
+            for(let [k, v] of map) {
+                for(let i = 0; i < v; i++) {
+                    ans += k
+                }
+            }
+            return ans
+
+        };
+        console.log(frequencySort('Aabb'))
+    </script>
+</body>
+</html>

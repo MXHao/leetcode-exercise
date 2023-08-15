@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="newQuote()">click me for a fun fact</button>
+    <div id="quoteDisplay">
+        <script>
+            var quotes = [
+                'fun fact 1',
+                'fun fact 2',
+                'fun fact 3',
+                'fun fact 4',
+                'fun fact 5'
+            ]
+            function newQuote() {
+                var randomNumber = Math.floor(Math.random() * (quotes.length));
+                document.getElementById('quoteDisplay').innerHTML = quotes[randomNumber];
+            }
+        </script>
+        <style>
+            button {
+                display: inline-block;
+                background-color: #c0c0c0;
+                border-top: 2px solid white;
+                border-left: 2px solid white;
+                border-right: 2px solid black;
+                border-bottom: 2px solid black;
+                color: black;
+                text-align: center;
+                font-size: 15px;
+                font-family: yay;
+                padding: 5px;
+                width: 150px;
+                transition: all 0.5s;
+                cursor: pointer;
+                margin: 5px;
+            }
+
+            button span {
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                transition: 0.1s;
+            }
+
+            .button {
+                transition: 0.2s;
+            }
+
+            .button:hover {
+                transition-delay: 3s;
+            }
+        </style>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1.数组累加
+        // let arr = [1, 2, 3, 4, 5]
+        // let sum = arr.reduce((a, i) => a + i)
+        // console.log('sum: ', sum);
+        // let sum2 = arr.reduce((a, i) => a + i, 5)
+        // console.log('sum2: ', sum2);
+
+        // 2.找出数组最大值
+        // let arr = [2, 33, 10, 54, 4]
+        // let max = arr.reduce((a, i) => Math.max(a, i))
+        // console.log('max: ', max);
+
+        // 3.拼接数组
+        let data = [
+        ["红色","128g", "苹果手机"],
+        ["南北","两室一厅","128㎡","洋房住宅"],
+        ["小米","白色","智能运动手表","心率血压血氧","来电信息提醒"], 
+        ["官方发售","2020年秋季","篮球","球鞋","品牌直邮"]
+        ]
+        let dataConcat = data.map(item => item.reduce((a, i) => `${a} ${i}`)
+        )
+        console.log(dataConcat)
+    </script>
+</body>
+</html>

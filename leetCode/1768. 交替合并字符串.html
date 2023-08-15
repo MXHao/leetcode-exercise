@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    示例 1：
+
+    输入：word1 = "abc", word2 = "pqr"
+    输出："apbqcr"
+    解释：字符串合并情况如下所示：
+    word1：  a   b   c
+    word2：    p   q   r
+    合并后：  a p b q c r
+    <script>
+        var mergeAlternately = function(word1, word2) {
+            let arr = []
+            let len1 = word1.length
+            let len2 = word2.length
+            let minLen = Math.min(len1, len2)
+            let maxLen = Math.max(len1, len2)
+            for (let i = 0; i < minLen; i++) {
+               arr.push(word1[i])
+               arr.push(word2[i])
+            }
+            let leftArr = len1 > len2 ? word1.slice(minLen, maxLen).split('') : word2.slice(minLen, maxLen).split('')
+            arr.push(...leftArr)
+            return arr.join(',')
+        };
+        console.log(mergeAlternately('abc', 'pqrcv'))
+    </script>
+</body>
+</html>

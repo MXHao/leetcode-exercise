@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var pivotInteger = function(n) {
+            let sum = (1 + n) * n / 2
+            let left = 0
+            let right
+            for (let i = 1; i <= n; i++) {
+               left += i
+               right = sum - left + i
+               if(left == right) {
+                return i
+               }
+            }
+            return -1
+        };
+        console.log(pivotInteger(8))
+    </script>
+</body>
+</html>

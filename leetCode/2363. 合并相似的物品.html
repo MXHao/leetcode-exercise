@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //待完善
+        var mergeSimilarItems = function (items1, items2) {
+            let len1 = items1.length
+            let len2 = items2.length
+            if (len1 >= len2) {
+                items1 = items1.sort((a, b) => a[0] - b[0])
+                let temp = []
+                for (let i = 0; i < len1; i++) {
+                    for (let j = 0; j < len2; j++) {
+                        if (items1[i][0] == items2[j][0]) {
+                            temp.push([items1[i][0], items1[i][1] + items2[j][1]])
+                        }
+                    }
+                }
+                console.log(temp)
+                return [...temp, ...items1.slice(temp.length)]
+            }else {
+                items2 = items2.sort((a, b) => a[0] - b[0])
+                let temp = []
+                for (let i = 0; i < len2; i++) {
+                    for (let j = 0; j < len1; j++) {
+                        if (items2[i][0] == items1[j][0]) {
+                            temp.push([items2[i][0], items2[i][1] + items1[j][1]])
+                        }
+                    }
+                }
+                return [...temp, ...items2.slice(temp.length)]
+            }
+        };
+        console.log(mergeSimilarItems([[5,1],[4,2],[3,3],[2,4],[1,5]], [[7,1],[6,2],[5,3],[4,4]]))
+    </script>
+</body>
+
+</html>
