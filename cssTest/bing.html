@@ -1,100 +1,30 @@
 <html>
 <head>
-  <!-- Import Vue.js and Element UI -->
-  <script src="https://unpkg.com/vue@2"></script>
-  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-  <style>
-    body {
-      background-color: #90EE90;
-      font-family: Arial, sans-serif;
-    }
-    .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      margin: 50px;
-    }
-    .qr-code {
-      width: 300px;
-      height: 300px;
-      border: 5px solid black;
-    }
-    .url-input {
-      width: 400px;
-      height: 40px;
-      font-size: 20px;
-    }
-    .button {
-      width: 100px;
-      height: 40px;
-      background-color: #32CD32;
-      color: white;
-      font-size: 18px;
-      border-radius: 10px;
-    }
-    .instructions {
-      color: red;
-      list-style-type: decimal;
-    }
-    /* Added some CSS effects to make the webpage more attractive */
-    .qr-code:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px black;
-    }
-    .button:hover {
-      transform: scale(1.1);
-      box-shadow: inset 0 0 5px white;
-    }
-    .url-input:focus {
-      outline: none;
-      border: 2px solid #32CD32;
-    }
-  </style>
+<style>
+.marquee {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  color: white;
+  font-size: 36px;
+  text-align: center;
+  line-height: 50px;
+  padding: 5px;
+  border: 5px solid white;
+}
+
+.green {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% { background-color: black; }
+  50% { background-color: green; }
+  100% { background-color: black; }
+}
+</style>
 </head>
 <body>
-  <!-- Use Vue.js and Element UI components -->
-  <div id="app" class="container">
-    <div class="qr-code">
-      <!-- QR code image here -->
-    </div>
-    <div class="form">
-      <el-input v-model="url" class="url-input"></el-input>
-      <div class="buttons">
-        <el-button type="success" class="button" @click="generate">生成</el-button>
-        <el-button type="success" class="button" @click="copy">复制</el-button>
-      </div>
-      <ol class="instructions">
-        <li>输入网址或者粘贴网址到输入框</li>
-        <li>点击生成按钮，生成二维码</li>
-        <li>点击复制按钮，复制二维码图片</li>
-        <li>将二维码图片分享给你的朋友</li>
-      </ol>
-    </div>
-  </div>
-  <!-- Add some Vue.js logic to handle the input and buttons -->
-  <script>
-    new Vue({
-      el: '#app',
-      data() {
-        return {
-          url: 'https://www.bing.com'
-        };
-      },
-      methods: {
-        generate() {
-          // Generate a QR code based on the url
-          // For simplicity, use a placeholder image here
-          let qrCode = document.querySelector('.qr-code');
-          qrCode.src = 'https://via.placeholder.com/300';
-        },
-        copy() {
-          // Copy the QR code image to the clipboard
-          // For simplicity, use an alert message here
-          alert('QR code copied!');
-        }
-      }
-    });
-  </script>
+<div class="marquee green">系统测试开始</div>
 </body>
 </html>

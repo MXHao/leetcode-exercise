@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //定义namePoint和allPoint数组
+let namePoint = [
+  {
+    location: "121.484038,31.211512",
+    name: "7777777777",
+  },
+  {
+    location: "121.480133,31.210246",
+    name: "徐家汇路与斜徐支路交叉口",
+  },
+  {
+    location: "121.476163,31.209145",
+    name: "徐家汇路与马当路交叉口",
+  },
+  {
+    location: "121.472086,31.208117",
+    name: "徐家汇路与斜徐路交叉口",
+  },
+];
+var allPoint = [
+  [121.484038, 31.211512],
+  [121.480133, 31.210246],
+  [121.476163, 31.209145],
+  [121.475712, 31.208594],
+  [121.474489, 31.20808],
+  [121.472086, 31.208117],
+];
+
+//定义newList数组
+var newList = [];
+
+//遍历namePoint数组
+for (let i = 0; i < namePoint.length - 1; i++) {
+  //定义一个对象，存放开始点、结束点和辅助点
+  let obj = {};
+  //设置开始点和结束点
+  obj.start = namePoint[i];
+  obj.end = namePoint[i + 1];
+  //定义一个数组，存放辅助点
+  let auxiliaryPoint = [];
+  //遍历allPoint数组，找到辅助点
+  for (let j = 0; j < allPoint.length; j++) {
+    //判断allPoint[j]是否在开始点和结束点之间
+    if (
+      allPoint[j][0] > obj.start.location.split(",")[0] &&
+      allPoint[j][0] < obj.end.location.split(",")[0]
+    ) {
+      //把allPoint[j]转成字符串，放到辅助点数组中
+      auxiliaryPoint.push(allPoint[j].join(", "));
+    }
+  }
+  //设置辅助点
+  obj.auxiliaryPoint = auxiliaryPoint;
+  //把对象放到newList数组中
+  newList.push(obj);
+}
+
+//打印newList数组
+console.log(newList);
+
+    </script>
+</body>
+</html>
