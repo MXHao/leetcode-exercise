@@ -1,58 +1,124 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <!-- <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li> -->
-      <!-- <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li> -->
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div id="alertOverlay">
+    <div></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  name: "MyDialog",
+  props: {},
+  data() {
+    return {
+      visible: false,
+    };
+  },
+  watch: {},
+  mounted() {
+    this.$nextTick(() => {
+        this.setAlertState(true);
+      });
+  },
+  
+  methods: {
+    ok() {
+      // this.$emit('ok')
+      this.visible = false;
+    },
+    setAlertState(active) {
+      var alertOverlay = document.getElementById("alertOverlay");
+      if (active) {
+        alertOverlay.classList.add("alert-active");
+      } else {
+        alertOverlay.classList.remove("alert-active");
+      }
+    },
+  },
+};
+</script>
+<style lang="scss" scoped>
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+:root {
+  --alert-size: 120px;
+}
+
+#alertOverlay::before,
+#alertOverlay::after {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 100%;
+}
+
+#alertOverlay > div::before,
+#alertOverlay > div::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 120px;
+}
+
+#alertOverlay::before {
+  background: linear-gradient(to right, red, transparent);
+  top: 0;
+  left: 0;
+  transform: rotate(0deg);
+}
+
+#alertOverlay::after {
+  background: linear-gradient(to left, red, transparent);
+  top: 0%;
+  left: 100%;
+  transform: rotate(0deg) translate(calc(-120px), 0px);
+}
+
+#alertOverlay > div::before {
+  background: linear-gradient(to top, red, transparent);
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+}
+
+#alertOverlay > div::after {
+  background: linear-gradient(to top, red, transparent);
+  top: 100%;
+  left: 0;
+  transform: rotate(0deg) translate(0px, calc(-120px));
+}
+
+#alertOverlay {
+  // position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 500px;
+  box-sizing: border-box;
+  opacity: 1;
+  transition: opacity 0.5s;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.alert-active {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
   }
 }
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
 </style>
+

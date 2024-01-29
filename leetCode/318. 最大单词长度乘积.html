@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 超时了
+        var maxProduct = function (words) {
+            let max = 0
+            let arr = words.sort((a, b) => {
+                return b.length - a.length
+            })
+            console.log(arr)
+            let len = arr.length
+            for (let i = 0; i < len - 1; i++) {
+                for (let j = 0; j < len; j++) {
+                    if (!hasDuplicate([...arr[i], ...arr[j]])) {
+                        if(arr[i].length * arr[j].length > max) {
+                            max = arr[i].length * arr[j].length
+                        }
+                    }
+                }
+
+            }
+            return max
+        };
+        var hasDuplicate = (arr) => {
+            var set = new Set(arr);
+            // 返回数组的长度是否等于Set的大小
+            return arr.length !== set.size;
+        }
+        console.log(maxProduct(["a", "ab", "abc", "d", "cd", "bcd", "abcd"]))
+    </script>
+</body>
+
+</html>

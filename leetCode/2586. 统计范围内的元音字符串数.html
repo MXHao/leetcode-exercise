@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var vowelStrings = function(words, left, right) {
+            let arr = ['a', 'e', 'i', 'o', 'u']
+            let count = 0
+            for (let i = left; i <= right; i++) {
+               if(arr.indexOf(words[i][0]) != -1 && arr.indexOf(words[i][words[i].length - 1]) != -1) {
+                count++
+               }
+            }
+            return count
+        };
+        console.log(vowelStrings(["hey","aeo","mu","ooo","artro"], 1, 4))
+    </script>
+</body>
+</html>

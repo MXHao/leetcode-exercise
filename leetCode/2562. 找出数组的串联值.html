@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var findTheArrayConcVal = function(nums) {
+            let ans = 0
+            let len = nums.length
+            for (let i = 0, j = len - 1; i < j; i++, j--) {
+               if(i < j) {
+                ans += parseInt(nums[i].toString() + nums[j].toString())
+               }else {
+                ans += nums[i]
+               }
+            }
+            return ans
+        };
+        console.log(findTheArrayConcVal([7,52,2,4]))
+    </script>
+</body>
+</html>

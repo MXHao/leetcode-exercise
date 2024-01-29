@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #232b36;
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            width: 240px;
+        }
+
+        .high {
+            position: absolute;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        .high span {
+            /* 动画名 */
+            animation-name: myAnimation;
+            /* 动画时长 */
+            animation-duration: 1s;
+            /* 无限循环 */
+            animation-iteration-count: infinite;
+            background-color: #AEF731;
+        }
+
+        @keyframes myAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+        .low {
+            opacity: .1;
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+        }
+
+        span {
+            width: 4px;
+            height: 4px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: .6;
+            display: block;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="grid high">
+            <span class="delay-4"></span>
+            <span class="delay-3"></span>
+            <span class="delay-2"></span>
+            <span class="delay-1"></span>
+            <span></span>
+            <span></span>
+            <span class="delay-1"></span>
+            <span class="delay-2"></span>
+            <span class="delay-3"></span>
+            <span class="delay-4"></span>
+            <span class="delay-4"></span>
+            <span class="delay-3"></span>
+            <span class="delay-2"></span>
+            <span class="delay-1"></span>
+            <span></span>
+            <span></span>
+            <span class="delay-1"></span>
+            <span class="delay-2"></span>
+            <span class="delay-3"></span>
+            <span class="delay-4"></span>
+            <span class="delay-4"></span>
+            <span class="delay-3"></span>
+            <span class="delay-2"></span>
+            <span class="delay-1"></span>
+            <span></span>
+            <span></span>
+            <span class="delay-1"></span>
+            <span class="delay-2"></span>
+            <span class="delay-3"></span>
+            <span class="delay-4"></span>
+        </div>
+
+        <div class="grid low">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+    </div>
+</body>
+
+</html>

@@ -7,7 +7,34 @@
 </head>
 <body>
     <script>
-        
+        var mostFrequentEven = function(nums) {
+            let map = new Map()
+            let len = nums.length
+            for (let i = 0; i < len; i++) {
+               if(nums[i] % 2 == 0) {
+                if(map.has(nums[i])) {
+                    map.set(nums[i], map.get(nums[i]) + 1)
+                }else {
+                    map.set(nums[i], 1)
+                }
+               }
+            }
+            if(map.size == 0) {
+                return -1
+            }else {
+                console.log(map.size)
+                let maxValue = Math.max(...map.values());
+                console.log(maxValue)
+                let filtered = [...map.entries()].filter(([key, value]) => value == maxValue);
+                console.log(filtered)
+                let minKey = Math.min(...filtered.map(([key, value]) => key));
+                console.log(minKey)
+                return minKey
+            }
+            
+
+        };
+        console.log(mostFrequentEven([29,47,21,41,13,37,25,7]))
     </script>
 </body>
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container"></div>
+    <script>
+        const data = ['你可能会想，为什么这个功能被实现为Object.groupBy而不是Array.prototype.groupBy。根据提案，有一个库曾经用不兼容的groupBy方法对Array.prototype进行了修改。在考虑为Web新增API时，向后兼容性非常重要。几年前，在尝试实现Array.prototype.flatten时就出现了一个称为SmooshGate的事件。使用静态方法实际上对未来的可扩展性更好。当Records和Tuples提案实现时，可以添加一个Record.groupBy方法，用于将数组分组为不可变记录。简而言之，使用静态方法可以更好地保持向后兼容性，并提供更好的扩展性，以便在未来添加更多功能和数据结构。']
+        const arr = []
+        // 获取dom元素
+        const container = document.querySelector('#container')
+        // for/of循环遍历数组
+        for (const item of data) {
+            // 打印每一个item => 数组的每一个元素
+            console.log(item)
+            // 创建p标签
+            const p = document.createElement('p')
+            // 遍历item的每一个字
+            for (let i = 0; i < item.length; i++) {
+                // 创建span
+                let span = document.createElement('span')
+                // span的内容等于item的每一个字
+                span.innerHTML = item[i]
+                // 将span插入到p标签中
+                p.append(span)
+                // 将span也添加到新数组中
+                arr.push(span)
+            }
+            // 将p标签插入到container
+            container.append(p)
+        }
+        // 延时1毫秒等待上方循环渲染完成
+        setTimeout(() => {
+            // 遍历arr数组的每一个元素
+            arr.forEach((item, index) => {
+                // 给每一个元素添加过渡延迟属性
+                // 让每一个字都比前一个字延时0.2秒的时间
+                item.style.transitionDelay = `${index * 0.1}s`
+                // 将透明度设置为不透明
+                item.style.opacity = 1
+            })
+        }, 1)
+
+    </script>
+    <style>
+        #container {
+  /* 添加这行样式=>文字纵向从右往左显示 */
+  /* 目前先不设置,后面可以取消注释 */
+  /* writing-mode: vertical-rl; */
+}
+#container span {
+  /* 这里opacity先设置为1，让其不透明，可以看到每一步的效果 */
+  /* 写完js之后到回来改为0 */
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+    </style>
+</body>
+
+</html>

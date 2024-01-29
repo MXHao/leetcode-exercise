@@ -1,55 +1,76 @@
 <template>
   <div id="app">
-    <button @click="shuffle">打乱</button>
-    <button @click="reset">重置</button>
-    <TransitionGroup name="list" tag="ul">
-      <li v-for="(item, index) in list" :key="index">
-        {{ item }}
-      </li>
-    </TransitionGroup>
+    <!-- <div id="container"></div> -->
+    <!-- <hello-world></hello-world> -->
+    <vanta-page></vanta-page>
   </div>
 </template>
 
 <script>
+import vantaPage from "./components/vantaPage.vue";
+
 export default {
+  components: { vantaPage },
   data() {
     return {
-      list: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+      
     };
   },
+  mounted() {
+    // this.print()
+  },
   methods: {
-    shuffle() {
-      this.list = []
-      this.list = this.changeArr()
-    },
-    reset() {
-      this.list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    },
-    changeArr() {
-      // 创建一个空数组
-      var arr = [];
-      // 循环100次
-      for (var i = 0; i < 11; i++) {
-        // 生成一个随机的0或1
-        var num = Math.floor(Math.random() * 2) + '';
-        // 将数字添加到数组中
-        arr.push(num);
-      }
-      // 输出字符串
-      return arr
-    },
+    print() {
+      const data = ['打字机效果']
+        const arr = []
+        // 获取dom元素
+        const container = document.querySelector('#container')
+        // for/of循环遍历数组
+        for (const item of data) {
+            // 打印每一个item => 数组的每一个元素
+            console.log(item)
+            // 创建p标签
+            const p = document.createElement('p')
+            // 遍历item的每一个字
+            for (let i = 0; i < item.length; i++) {
+                // 创建span
+                let span = document.createElement('span')
+                // span的内容等于item的每一个字
+                span.innerHTML = item[i]
+                // 将span插入到p标签中
+                p.append(span)
+                // 将span也添加到新数组中
+                arr.push(span)
+            }
+            // 将p标签插入到container
+            container.append(p)
+        }
+        // 延时1毫秒等待上方循环渲染完成
+        setTimeout(() => {
+            // 遍历arr数组的每一个元素
+            arr.forEach((item, index) => {
+                // 给每一个元素添加过渡延迟属性
+                // 让每一个字都比前一个字延时0.2秒的时间
+                item.style.transitionDelay = `${index * 0.1}s`
+                // 将透明度设置为不透明
+                item.style.opacity = 1
+            })
+        }, 1)
+    }
   },
 };
 </script>
 
 <style>
-.list-enter-active,
-.list-leave-active {
-  transition: all 1s;
+        #container {
+  /* 添加这行样式=>文字纵向从右往左显示 */
+  /* 目前先不设置,后面可以取消注释 */
+  /* writing-mode: vertical-rl; */
 }
-.list-enter-from,
-.list-leave-to {
+#container span {
+  /* 这里opacity先设置为1，让其不透明，可以看到每一步的效果 */
+  /* 写完js之后到回来改为0 */
   opacity: 0;
-  transform: translateX(30px);
+  transition: opacity 0.5s;
 }
 </style>

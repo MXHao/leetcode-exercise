@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <g>
+         <title>Layer 1</title>
+         <polyline stroke-linecap="round" id="svg_2" points="-182,-6.5 -182,-7.5 " stroke="#000" fill="none"/>
+         <text xml:space="preserve" text-anchor="start" font-family="Noto Sans JP" font-size="24" id="svg_3" y="85.5" x="168" stroke-width="0" stroke="#000" fill="#000000"/>
+         <text fill="#000000" stroke="#000" stroke-width="0" x="1046" y="75" id="svg_4" font-size="24" font-family="Noto Sans JP" text-anchor="start" xml:space="preserve"/>
+         <ellipse fill="none" stroke="#000" cx="450" cy="205.5" id="svg_6" rx="147" ry="77.5"/>
+        </g>
+       
+       </svg>
+    <script>
+        // 巨无霸汉堡：4 片番茄和 1 片奶酪
+        // 小皇堡：2 片番茄和 1 片奶酪
+        var numOfBurgers = function(tomatoSlices, cheeseSlices) {
+            let big = 0
+            let small = 0
+            if(tomatoSlices == 0 && cheeseSlices == 0) {
+                return [0, 0]
+            }
+            while (big < cheeseSlices) {
+                if(big * 4 + (cheeseSlices - big) * 2 == tomatoSlices) {
+                    return [big, cheeseSlices - big]
+                }else {
+                    big ++
+                }
+                
+            }
+            return [] 
+        };
+        console.log(numOfBurgers(17, 4))
+    </script>
+</body>
+</html>

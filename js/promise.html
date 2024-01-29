@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // request.js
+function requestData(url) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (url === "http://coderwhy.org") {
+        // 发送成功了
+        resolve("一组成功数据")
+      } else {
+        // 发送失败了
+        reject("请求url错误")
+      }
+    }, 1000);
+  })
+}
+
+
+// main.js
+const promise = requestData("http://coderwhy.org")
+promise.then((res) => {
+  console.log(res)
+}).catch((err) => {
+  console.log(err)
+})
+
+    </script>
+</body>
+</html>

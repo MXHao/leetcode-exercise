@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>搜索页</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  #search-container {
+    text-align: center;
+    padding: 20px;
+  }
+  #search-input {
+    width: 300px;
+    padding: 5px;
+  }
+  #results-container {
+    margin-top: 20px;
+  }
+  .highlight {
+    color: red;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+  <div id="search-container">
+    <input type="text" id="search-input" placeholder="请输入关键词">
+    <button onclick="search()">搜索</button>
+  </div>
+  <div id="results-container">
+    <ul id="results-list"></ul>
+  </div>
+
+  <script>
+    function search() {
+      const searchInput = document.getElementById('search-input');
+      const searchTerm = searchInput.value.toLowerCase();
+      const resultsList = document.getElementById('results-list');
+      resultsList.innerHTML = '';
+
+      // 在这里替换为你的数据，以下为示例数据
+      const data = [
+        '这是一个示例句子。',
+        '在这个例子中，关键词会被标记。',
+        '你可以根据需要替换这些数据。',
+        '示例搜索功能使用JavaScript实现。',
+        '关键词可以是用户在搜索框中输入的内容。',
+        '记得根据你的实际需求进行修改。'
+      ];
+
+      data.forEach(item => {
+        const lowerCaseItem = item.toLowerCase();
+        if (lowerCaseItem.includes(searchTerm)) {
+          const highlightedItem = item.replace(new RegExp(searchTerm, 'gi'), match => `<span class="highlight">${match}</span>`);
+          const li = document.createElement('li');
+          li.innerHTML = highlightedItem;
+          resultsList.appendChild(li);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
