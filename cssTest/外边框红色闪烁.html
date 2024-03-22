@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Red Blinking Border</title>
+    <style>
+        .blinking {
+            border: 2px solid red; /* 设置边框样式为红色 */
+            animation: blinker 1s infinite; /* 应用名称为"blinker"的动画，持续时间为1秒，无限次数重复 */
+            height: 100px;
+            width: 100px;
+        }
+        
+        @keyframes blinker {
+            0% { opacity: 1.0; } /* 初始状态不透明度为1（完全显示）*/
+            50% { opacity: 0.0; } /* 过渡到50％时将其变成完全隐藏 */
+            100% { opacity: 1.0; } /* 最后返回到完全显示状态 */
+        }
+    </style>
+</head>
+<body>
+    <div class="blinking"></div> <!-- 添加class为"blinking"的元素 -->
+</body>
+</html>

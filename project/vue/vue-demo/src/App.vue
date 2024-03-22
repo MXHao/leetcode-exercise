@@ -2,24 +2,62 @@
   <div id="app">
     <!-- <div id="container"></div> -->
     <!-- <hello-world></hello-world> -->
-    <vanta-page></vanta-page>
+    <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+      <el-tab-pane label="官方demo" name="first">
+        <draggableDemo v-if="activeName == 'first'"></draggableDemo>
+      </el-tab-pane>
+      <el-tab-pane label="表格" name="second">
+        <dragTable v-if="activeName == 'second'"></dragTable>
+      </el-tab-pane>
+      <el-tab-pane label="表格2" name="fifth">
+        <dragTable2 v-if="activeName == 'fifth'"></dragTable2>
+      </el-tab-pane>
+      <el-tab-pane label="复制表格" name="third">
+        <copyTable v-if="activeName == 'third'"></copyTable>
+      </el-tab-pane>
+      <el-tab-pane label="两个表格" name="fourth">
+        <twoTables v-if="activeName == 'fourth'"></twoTables>
+      </el-tab-pane>
+      <el-tab-pane label="树拖拽" name="sixth">
+        <treeDraggable v-if="activeName == 'sixth'"></treeDraggable>
+      </el-tab-pane>
+      <el-tab-pane label="并联表格行" name="seventh">
+        <binglianTable v-if="activeName == 'seventh'"></binglianTable>
+      </el-tab-pane>
+
+    </el-tabs>
   </div>
 </template>
 
 <script>
-import vantaPage from "./components/vantaPage.vue";
+import dragTable from "./components/dragTable.vue";
+import dragTable2 from "./components/dragTable2.vue";
+import draggableDemo from "./components/draggable.vue";
+import copyTable from "./components/copyTable.vue";
+import twoTables from "./components/twoTables.vue";
+import treeDraggable from "./components/test.vue";
+import binglianTable from "./components/binglianTable.vue";
+
+
+
+
+
+
 
 export default {
-  components: { vantaPage },
+  components: { dragTable, draggableDemo, copyTable, twoTables, dragTable2, treeDraggable, binglianTable },
   data() {
     return {
-      
+      activeName: 'seventh'
     };
   },
   mounted() {
     // this.print()
   },
   methods: {
+    handleClick(tab, event) {
+        console.log(tab, event);
+      },
     print() {
       const data = ['打字机效果']
         const arr = []

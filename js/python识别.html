@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function extractFunctionInfo(pythonCode) {
+            // 步骤1：提取函数名称和参数
+            const functionInfoRegex = /def\s+(\w+)\s*\(([^)]*)\)/g;
+            const functionInfo = [];
+            let match;
+            while ((match = functionInfoRegex.exec(pythonCode)) !== null) {
+                const functionName = match[1];
+                const paramsString = match[2];
+                const params = paramsString.split(',').map(param => param.trim());
+                functionInfo.push({ functionName, params });
+            }
+
+            // 步骤2：提取匿名函数
+            const anonymousFunctionRegex = /lambda\s+([^:]+)\s*:\s*([^;]+)/g;
+            const anonymousFunctions = [];
+            while ((match = anonymousFunctionRegex.exec(pythonCode)) !== null) {
+                const paramsString = match[1];
+                const expression = match[2];
+                const params = paramsString.split(',').map(param => param.trim());
+                anonymousFunctions.push({ params, expression });
+            }
+
+            // 返回结果
+            return {
+                functionInfo,
+                anonymousFunctions,
+            };
+        }
+
+        // 示例用法
+        const pythonCode = `
+            def greet(name, age=30, *args):
+                print(f"Hello, {name}! You are {age} years old.")
+                print("Additional arguments:", args)
+
+            def calculate_square(x):
+                return x ** 2
+
+            # 匿名函数示例
+            add = lambda a, b: a + b
+            multiply = lambda x, y: x * y
+            `;
+
+        const { functionInfo, anonymousFunctions } = extractFunctionInfo(pythonCode);
+        console.log("提取的函数信息:", functionInfo);
+        console.log("提取的匿名函数:", anonymousFunctions);
+
+    </script>
+</body>
+
+</html>
