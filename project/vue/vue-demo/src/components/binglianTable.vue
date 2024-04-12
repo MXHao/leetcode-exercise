@@ -22,8 +22,8 @@
         </div>
       </el-aside>
       <el-main class="center">
-        改变合并长度为{{ csxLength }}
-        <el-input type="number" v-model="csxLength" placeholder="请输入并行测试子项数量"></el-input>
+        <!-- 改变合并长度为{{ csxLength }}
+        <el-input type="number" v-model="csxLength" placeholder="请输入并行测试子项数量"></el-input> -->
         <div id="target" class="dropabled target">
         <el-table :span-method="(param)=>objectSpanMethod(param)" @dragover.native.prevent @drop.native="drop" ref="table" :data="tableData" border style="width: 100%">
           <el-table-column prop="relation" label="并行关系" width="180">
@@ -332,81 +332,7 @@
         // })
       },
       itemSave() {//测试项保存
-        console.log(this.tableData)
-        return
-        this.$refs["form"].validate((valid) => {
-          if (valid && this.isAdd) {
-            let param = {}
-            if (this.isCsx) {//保存测试项
-              param = {
-                configId: this.configId,
-                itemLevel: 3,
-                itemName: this.itemForm.csxmc,
-                productTypeId: this.currentNode.data.productTypeId,
-                modelName: this.currentNode.name
-              }
-            } else {
-              param = {//保存测试子项
-                configId: this.configId,
-                itemLevel: 4,
-                itemName: this.itemForm.csxmc,
-                productTypeId: this.currentNode.data.productTypeId,
-                modelName: this.currentNode.data.modelName,
-                parentId: this.currentNode.dataId,
-                caseFuncId: this.itemForm.cshsId,
-                paramVal: this.itemForm.cscs,
-  
-              }
-            }
-  
-            testTaskConfig.addItem(param).then(res => {
-              this.$notify({
-                title: '新增成功',
-                type: 'success',
-                duration: 2500
-              })
-              this.getData()
-            }).catch(err => {
-  
-            })
-          } else if (valid && !this.isAdd) {
-            let param = {}
-            if (this.isCsx) {//保存测试项
-              param = {
-                id: this.currentNode.dataId,
-                configId: this.configId,
-                itemLevel: 3,
-                itemName: this.itemForm.csxmc,
-                productTypeId: this.currentNode.data.productTypeId,
-                modelName: this.currentNode.data.modelName
-              }
-            } else {
-              param = {//保存测试子项
-                id: this.currentNode.dataId,
-                configId: this.configId,
-                itemLevel: 4,
-                itemName: this.itemForm.csxmc,
-                productTypeId: this.currentNode.data.productTypeId,
-                modelName: this.currentNode.data.modelName,
-                parentId: this.currentNode.data.parentId,
-                caseFuncId: this.itemForm.cshsId,
-                paramVal: this.itemForm.cscs,
-              }
-            }
-  
-            testTaskConfig.editItem(param).then(res => {
-              this.$notify({
-                title: '编辑成功',
-                type: 'success',
-                duration: 2500
-              })
-              this.getData()
-            }).catch(err => {
-  
-            })
-          }
-        })
-  
+        console.log('this.tableData: ', this.tableData);
       },
       objectSpanMethod({  row, column, rowIndex, columnIndex }) {
         // console.log('countColumn, countRow, row, column, rowIndex, columnIndex: ', countColumn, countRow, row, column, rowIndex, columnIndex);
@@ -501,6 +427,10 @@
         const rows = this.$refs.table.$el.querySelectorAll("tbody > tr");
         const index = Array.from(rows).indexOf(targetRow);
         if (index > -1) {
+            if(this.tableData.some(item => item.itemId === this.draggedNode.data.id)) {
+            this.$message.warning('不能重复添加')
+            return
+            }
           // console.log('this.draggedNode.zx: ', this.draggedNode.data.zx);
           console.log(`Dropped ${this.draggedNode.label} at row ${index + 1}`);
           if(this.tableData[index].name) {//创建并联组
@@ -526,7 +456,8 @@
               uud: this.getUuiD(),
               cszx: this.draggedNode.data.zx,
               bxzx: [],
-              reIndex: this.relationIndex >= 0 ? this.relationIndex : null
+              reIndex: this.relationIndex >= 0 ? this.relationIndex : null,
+              itemId: this.draggedNode.data.id
             };
             this.tableData.splice(index + 1, 0, j)
           }else {
@@ -534,6 +465,7 @@
             this.tableData[index].name = this.draggedNode.parent.label + ' ' + this.draggedNode.label
             this.tableData[index].cszx = this.draggedNode.data.zx
             this.tableData[index].bxzx = []
+            this.tableData[index].itemId = this.draggedNode.data.id
           }
         }
       },

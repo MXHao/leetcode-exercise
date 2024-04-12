@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var minimumSum = function(nums) {
+            let len = nums.length;
+            let res = Number.MAX_SAFE_INTEGER;
+            for (let i = 0; i < len; i++) {
+               for (let j = i+1; j < len; j++) {
+                  if(nums[i] < nums[j]) {
+                    for (let k = j+1; k < len; k++) {
+                       if(nums[k] < nums[j]) {
+                        let tmp = nums[i] + nums[j] + nums[k]
+                        res = Math.min(res, tmp)
+                       }
+                    }
+                  }
+               }
+            }
+            return res == Number.MAX_SAFE_INTEGER ? -1 : res
+        };
+        console.log(minimumSum([5,4,8,7,10,2]))
+    </script>
+</body>
+</html>

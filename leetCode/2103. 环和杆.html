@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var countPoints = function(rings) {
+            let arr = rings.split('')
+            if(arr.length < 6) {
+                return false
+            }
+            console.log(arr)
+            let result = []
+            for (let i = 0; i < arr.length; i+=2) {
+               result.push(arr.slice(i, i + 2))
+            }
+            console.log(result)
+            let deng = []
+            let zhuzi = []
+            result.forEach(item => {
+                deng.push(item[0])
+                zhuzi.push(item[1])
+            });
+            zhuzi = [...new Set(zhuzi)]
+            let zhuziArr = []
+            zhuzi.forEach(item => {
+                zhuziArr.push({key: item, value: ''})
+            });
+            console.log('zhuziArr: ', zhuziArr);
+            zhuziArr.forEach(item => {
+                result.forEach(item2 => {
+                    if(item2[1] == item.key) {
+                        item.value += item2[0]
+                    }
+                });
+            });
+            console.log(zhuziArr)
+            return zhuziArr.filter(item => item.value.indexOf('B') > -1 && item.value.indexOf('G') > -1 && item.value.indexOf('R') > -1 ).length
+        };
+        console.log(countPoints("B9R9G0R4G6R8R2R9G9"))
+    </script>
+</body>
+</html>

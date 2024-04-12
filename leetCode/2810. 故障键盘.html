@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var finalString = function(s) {
+            let arr = s.split('');
+            let len = arr.length;
+            let resultArr = []
+            for (let i = 0; i < len; i++) {
+                if(arr[i] == 'i') {
+                    resultArr.reverse()
+                }else {
+                    resultArr.push(arr[i])
+                }
+            }
+            return resultArr.join('')
+        };
+        console.log(finalString("poiinter"))
+    </script>
+</body>
+</html>
